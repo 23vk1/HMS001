@@ -1,10 +1,11 @@
 import express from 'express';
-import { sendMessage } from '../controller/messageController.js';
-
+import { sendMessage, getAllMessages } from '../controller/messageController.js';
+import {isAdminAuthanticated} from '../middlewares/auth.js'
 
 
 const router  =  express.Router();
 router.post('/send', sendMessage);
+router.get('/getall', isAdminAuthanticated, getAllMessages);
 
 
 
