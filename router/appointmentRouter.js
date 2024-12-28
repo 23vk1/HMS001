@@ -4,10 +4,10 @@ import { isPatientAuthanticated, isAdminAuthanticated } from '../middlewares/aut
 
 const router = express.Router();
 
-router.post('/post',isPatientAuthanticated, postAppointment)
-router.get('/getall',isAdminAuthanticated, getAllAppointment)
-router.put('/update/:id',isAdminAuthanticated, updateAppointmentStatus)
-router.delete('/delete/:id',isAdminAuthanticated, deleteAppointment)
+router.post('/post', isPatientAuthanticated, postAppointment)
+router.get('/getall', isAdminAuthanticated, getAllAppointment)
+router.put('/update/:id', isAdminAuthanticated, updateAppointmentStatus)
+router.delete('/delete/:id', isAdminAuthanticated, deleteAppointment)
 
 
 export default router;

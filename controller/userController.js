@@ -119,7 +119,7 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
     if (!allowedFormates.includes(docAvatar.mimetype)) {
         return next(new ErrorHandler("File formate not supported", 400));
     }
-    const { firstName, lastName, email, phone,password, dob, gender, nic, doctorDepartment } = req.body;
+    const { firstName, lastName, email, phone, password, dob, gender, nic, doctorDepartment } = req.body;
 
     if (!firstName || !lastName || !email || !phone || !password || !dob || !gender || !nic || !doctorDepartment) {
         return next(new ErrorHandler("Please fill all the fields", 400));
@@ -135,17 +135,17 @@ export const addNewDoctor = catchAsyncErrors(async (req, res, next) => {
     if (!coudinaryResponse || coudinaryResponse.error) {
         console.log("Coudinary Error : ", coudinaryResponse.error || 'Unknown coudinary error');
     }
-    const doctor = await User.create({ 
-        firstName, lastName, email, phone, password, dob, gender, nic, doctorDepartment, 
+    const doctor = await User.create({
+        firstName, lastName, email, phone, password, dob, gender, nic, doctorDepartment,
         role: 'Doctor',
-        docAvatar : {
-            public_id : coudinaryResponse.public_id,
-            url : coudinaryResponse.secure_url
-        } 
+        docAvatar: {
+            public_id: coudinaryResponse.public_id,
+            url: coudinaryResponse.secure_url
+        }
     });
     res.status(200).json({
-        success : true,
-        message : "New Doctor Registered Successfully",
+        success: true,
+        message: "New Doctor Registered Successfully",
         doctor
     })
 

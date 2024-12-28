@@ -4,84 +4,84 @@ import validator from "validator";
 
 
 
- const appointmentSchema  = new Mongoose.Schema({
-    firstName : {
+const appointmentSchema = new Mongoose.Schema({
+    firstName: {
         type: String,
-        required : true,
-        minLength : [3, 'First name must be at least 3 characters!']
+        required: true,
+        minLength: [3, 'First name must be at least 3 characters!']
     },
-    lastName : {
+    lastName: {
         type: String,
-        required : true,
-        minLength : [3, 'Last name must be at least 3 characters!']
+        required: true,
+        minLength: [3, 'Last name must be at least 3 characters!']
     },
-    email : {
+    email: {
         type: String,
-        required : true,
-        validate : [validator.isEmail, 'Please provide a valid email!']
+        required: true,
+        validate: [validator.isEmail, 'Please provide a valid email!']
     },
-    phone : {
+    phone: {
         type: String,
-        required : true,
-        minLength : [10, 'phone number must be at least 10 digits'],
+        required: true,
+        minLength: [10, 'phone number must be at least 10 digits'],
         maxLength: [10, 'phone number must be at least 10 digits']
     },
-    nic : {
+    nic: {
         type: String,
-        required : true,
-        minLength : [13, 'NIC must contain exact 13 digits'],
+        required: true,
+        minLength: [13, 'NIC must contain exact 13 digits'],
         maxLength: [13, 'NIC must contain exact 13 digits']
     },
-    dob : {
+    dob: {
         type: Date,
-        required : [true, "date of birth is required"],
+        required: [true, "date of birth is required"],
     },
-    gender : {
+    gender: {
         type: String,
-        required : true,
-        enum : ["Male", "Female", "Other"]
+        required: true,
+        enum: ["Male", "Female", "Other"]
     },
-    appointment_data : {
-        type :String,
-        required : true,
+    appointment_data: {
+        type: String,
+        required: true,
     },
-    department : {
-        type :String,
-        required : true,
+    department: {
+        type: String,
+        required: true,
     },
-    doctor : {
-        firstName : {
-            type :String,
-            required : true,
+    doctor: {
+        firstName: {
+            type: String,
+            required: true,
         },
-        lastName : {
-            type :String,
-            required : true,
+        lastName: {
+            type: String,
+            required: true,
         }
     },
-    hasVisited : {
-        type : Boolean,
-        required : true,
-        default : false,
+    hasVisited: {
+        type: Boolean,
+        required: true,
+        default: false,
     },
-    doctorId : {
-        type : mongoose.Schema.ObjectId,
-        required : true,
+    doctorId: {
+        type: mongoose.Schema.ObjectId,
+        required: true,
     },
-    patientId : {
-        type : mongoose.Schema.ObjectId,
-        required : true,
+    patientId: {
+        type: mongoose.Schema.ObjectId,
+        required: true,
     },
-    address : {
-        type : String,
-        required : true,
+    address: {
+        type: String,
+        required: true,
     },
-    status : {
-        type : String,
-        enum : ["Pending", "Accepted", "Rejected"],
-        default : "Pending",
+    status: {
+        type: String,
+        enum: ["Pending", "Accepted", "Rejected"],
+        default: "Pending",
     }
 });
 
 
-export const Appointment  = Mongoose.model('Appointment', appointmentSchema)
+export const Appointment = Mongoose.model('Appointment', appointmentSchema)
