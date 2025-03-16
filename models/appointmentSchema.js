@@ -41,7 +41,7 @@ const appointmentSchema = new Mongoose.Schema({
         required: true,
         enum: ["Male", "Female", "Other"]
     },
-    appointment_data: {
+    appointment_date: {
         type: String,
         required: true,
     },
